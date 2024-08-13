@@ -20,6 +20,7 @@ CON UN ARRAY.
 Un array se escribe como una lista de valores entre corchetes, separados por coma.
 
 const listaDeNumeros = [1, 2, 3, 4, 6]
+const listaDeCualquierCosa = ['Tomas', 2, undefined, null, [1, 2, 3, 4]]
 
 Para acceder a un elemento de la lista lo hago con corchetes LA PRIMERA POSICIÓN ES CERO.
 Cuando se ponen corchetes despues de una expresión, con otra expresión dentro, se busca en la expresiuón de la izquierda
@@ -45,7 +46,7 @@ Los elementos de un array son almacenados como propiedades del array, usando num
 
 
 ----- MÉTODOS -----
-Los métodos son PROPIEDADES que tienen valores de función.
+Los métodos son PROPIEDADES cuyo valor es una función.
 
 METODOS COMUNES DE STRINGS:
 - toUpperCase
@@ -67,7 +68,40 @@ Son colecciones arbitrarias de propiedades.
 
 // Así se declaran los objetos, con llaves y comas separando las propiedades
 
+/*
 const diaUno = {
   ardilla: false,
   eventos: ['trabajo', 'toco un arbol', 'pizza', 'salir a correr'],
 }
+
+Para agregar propiedades a un objeto, sólo necesito vincularla, aunque la propiedad no exista previamente.
+Para cambiar el valor de una propiedad, sólo tengo que vincularle un nuevo valor.
+Si la propiedad ya existe -> La reemplaza
+Si la propiedad no existe -> La crea
+
+Para borrar una propiedad se usa la palabra clave delete:
+delete persona.nombre
+
+Operador binario 'in':
+Evaluar si el objeto contiene una propiedad con el nombre del string.
+string in objeto
+
+Saber qué propiedades existen dentro de un objeto:
+Object.keys(objeto) -> Devuelve array de strings, con los nombres de cada una de las propiedades del objeto.
+
+Object.values(objeto) -> Devuleve un array (de múltiples tipos) con los valores de las propiedades del objeto.
+
+Object.assign() -> copiar todas las propiedads de un objeto en otro.
+
+const persona = {
+  nombre: 'Tomás',
+  apellido: 'Lleonart',
+  edad: 30,
+  nacimiento: '10/03/1994',
+  club: "Newell's Old Boys de Rosario",
+  saludo: (personaASaludar) => {
+    console.log(`Tomás dice "Hola ${personaASaludar}"`)
+  },
+}
+
+*/

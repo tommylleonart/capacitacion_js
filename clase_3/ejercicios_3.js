@@ -8,7 +8,7 @@ número es par o impar usando % 2 para ver si es divisible entre dos. Aquí hay
 otra manera de definir si un número entero positivo es par o impar:
 • Zero es par.
 • Uno es impar.
-• Para cualquier otro número N, su paridad es la misma que N - 2.
+• Para cualquier otro número N, su paridad (si es par o no) es la misma que N - 2 (si N - 2 es par, entonces N es par).
 Define una función recursiva esPar que corresponda a esta descripción. La
 función debe aceptar un solo parámetro (un número entero, positivo) y devolver
 un Booleano.
@@ -29,4 +29,36 @@ Despues, escribe una función llamada contarCaracteres que se comporte
 como contarFs, excepto que toma un segundo argumento que indica el carácter
 que debe ser contado (en lugar de contar solo caracteres “F” en mayúscula).
 Reescribe contarFs para que haga uso de esta nueva función.
+
+const esPar = (n) => {
+  console.log(`Evaluando ${n}`)
+
+  if (n === 0) {
+    console.log(`${n} es cero.`)
+    return true
+  } else if (n === 1) {
+    console.log(`${n} es uno.`)
+    return false
+  } else {
+    console.log(`${n} no es cero ni uno.`)
+    return esPar(n - 2)
+  }
+}
+
+const resultado = esPar(41)
+
+console.log(resultado)
+
+
+const contarFs = (palabra) => {
+  let contador = 0
+
+  for (i = 0; i < palabra.length; i++) {
+    if (palabra[i] === 'F') {
+      contador++
+    }
+  }
+
+  return contador
+}
 */
