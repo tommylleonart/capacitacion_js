@@ -30,13 +30,13 @@ OBJETO2 Y OBJETO TIENEN LA MIMA IDENTIDAD, OBJETO3 OTRA.
 
 
 */
+/*
 
 let diario = [1, 2, 3, 4]
 
-/* for (let i = 0; i < diario.length; i++) {
+for (let i = 0; i < diario.length; i++) {
   console.log(diario[i])
-} 
-
+}
 // El operador binario "of" en un ciclo for, espera una declaración a la izquierda y un iterable (array) a la derecha.
 // Cada elemento del array, será el valor de la declaración en cada iteración.
 
