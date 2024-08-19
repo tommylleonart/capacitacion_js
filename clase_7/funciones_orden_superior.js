@@ -103,4 +103,12 @@ repetirAccion(3, (n) => {
   })
 })
 
+
+- Ciclo forEach.
+Método de array incorporado. Acepta una función (es una función de orden superior).
+Ejemplo:
+
+const arrayPrueba = [1, 2, 3]
+
+arrayPrueba.forEach((elemento) => console.log(elemento))
 */
