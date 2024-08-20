@@ -1,9 +1,3 @@
-/*
-
------ CONJUNTO DE DATOS DE CÓDIGOS -----
-
-*/
-
 const SCRIPTS = [
   {
     name: 'Caucasian Albanian',
@@ -1869,110 +1863,47 @@ const SCRIPTS = [
 
 /*
 
------ FILTRANDO ARRAYS -----
-Nos interesa filtrar por los códigos que están en uso.
+----- COMPOSABILIDAD -----
 
-const filtrar = (array, prueba) => {
-  const pasaron = []
+- Componer operaciones.
 
-  for (elemento of array) {
-    if (prueba(elemento)) {
-      pasaron.push(elemento)
+Objetivo: Encontrar el año de origen promedio para los códigos vivos y muertos.
+
+const promedio = (array) => {
+  const resultado = Math.round(array.reduce((a, b) => a + b) / array.length)
+
+  return resultado
+}
+
+const arrayAñosVivos = SCRIPTS.filter((elemento) => elemento.living).map(
+  (elemento) => elemento.year
+)
+
+const arrayAñosMuertos = SCRIPTS.filter((elemento) => !elemento.living).map(
+  (elemento) => elemento.year
+)
+
+console.log(promedio(arrayAñosVivos))
+console.log(promedio(arrayAñosMuertos))
+
+
+
+----- STRINGS Y CODIGOS DE CARACTERES -----
+
+Objetivo averiguar qué lengua usa una pieza de texto.
+*/
+
+const codigoCaracter = (codigo_caracter) => {
+  for (codigo of SCRIPTS) {
+    if (
+      codigo.ranges.some(([desde, hasta]) => {
+        return codigo_caracter >= desde && codigo_caracter < hasta
+      })
+    ) {
+      return codigo.name
     }
   }
-
-  return pasaron
+  return null
 }
 
-console.log(filtrar(SCRIPTS, (lengua) => lengua.living))
-
-Como esto se hace muchísimo, ya existe una función integrada que lo hace.
-
-const arraySinFiltrar = [1, 2, 3, 4]
-
-const pruebaEsPar = (numero) => {
-  return numero % 2 == 0
-}
-
-const arrayFiltrado = arraySinFiltrar.filter((elemento) =>
-  pruebaEsPar(elemento)
-)
-
-console.log(arraySinFiltrar, arrayFiltrado)
-
------ TRANSFORMANDO CON MAP -----
-
-- TENEMOS UN ARRAY DE OBJETOS QUE REPRENSENTAN CÓDIGOS, VIENEN DE FILTRAR EL ARRAY SCRIPT.
-- NO QUIERO TODOS LOS CONJUNTOS DE DATOS ENTEROS (NO QUIERO EL OBJETO ENTERO), LO QUE QUIERO
-ES EL NOMBRE DE LA LENGUA.
-
-VAMOS A DESARROLLAR EL MÉTODO INTEGRADO MAP, QUE "MAPEA" UN ARRAY.
-
-const map = (array, transformar) => {
-  const mapeados = []
-
-  for (let elemento of array) {
-    transformar(elemento)
-  }
-
-  return mapeados
-}
-
-const lenguasDerechaAIzquierda = SCRIPTS.filter(
-  (elemento) => elemento.direction == 'rtl'
-)
-
-const transformacionObjetoANombre = (poronga) => {
-  return poronga.name
-}
-
-const arrayNuevo = map(lenguasDerechaAIzquierda, transformacionObjetoANombre)
-
-COMO ESTA FUNCION MAP SE USA MUCHÍSIMO, EXISTE DE FORMA NATIVA:
-
-const scriptConNombres = SCRIPTS.map((elemento) => elemento.name)
-
-console.log(scriptConNombres, SCRIPTS)
-
-
-
------ RESUMIENTO CON REDUCE -----
-OTRA COSA COMUN QUE SE HACE CON UN ARRAY ES CALCULAR UN VALOR ÚNICO A PARTIR DE ÉL (DE UN ARRAY).
-POR EJEMPLO, SUMAR UNA COLECCIÓN DE NÚMEROS; O ENCONTRAR EL CÓDIGO (LENGUAS DEL ARRAY SCRIPTS) 
-CON LA MAYOR CANTIDAD DE CARACTERES.
-
-REDUCE FUNCIONA CONSTRUYENDO UN VALOR AL REPETIDAMENTE TOMAR UN SOLO ELEMENTO DEL ARRAY Y COMBINARLO CON EL VALOR
-ACTUAL.
-
-EJEMPLO: SUMAR NUMEROS EMPIEZA CON EL CERO, Y PARA CADA ELEMENTO, AGREGO ESE NUMERO A LA SUMA.
-
-PARÁMETROS DE REDUCE (desarrollado por nosotros):
-- ARRAY.
-- FUNCIÓN DE COMBINACIÓN.
-- VALOR DE INICIO.
-
-DESARROLLEMOSLA:
-
-const reduce = (array, combinar, inicio) => {
-  let actual = inicio
-
-  for (elemento of array) {
-    actual = combinar(actual, elemento) 
-  }
-
-  return actual 
-}
-
-const sumar = (a, b) => {
-  return a + b
-}
-
-console.log(reduce([1, 2, 3, 4], (a, b) => sumar(a, b), 0))
-
-EXISTE DE FORMA INTEGRADA:
-
-const arrayReducido = [1, 2, 3, 4].reduce((a, b) => a + b)
-
-console.log(arrayReducido)
-
-*/
+console.log(codigoCaracter(121))
