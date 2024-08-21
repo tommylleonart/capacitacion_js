@@ -19,9 +19,9 @@
 - split(): devuelve un array con los strings que resultan de la división del original, tomando como separador
 el valor del argumento.
       const dato = '12341234-123412341234-12452345'
-      const datos = dato.split()
+      const datos = dato.split('-')
 
-      console.log(datos)
+      console.log(datos) -> ['12341234', '123412341234', '12452345']
 - join(): inverso de split.
       const datosSeparados = [1, 54623, 1236562]
       const datosJuntos = datosSeparados.join('-')

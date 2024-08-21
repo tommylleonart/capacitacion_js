@@ -1934,6 +1934,8 @@ const scriptConNombres = SCRIPTS.map((elemento) => elemento.name)
 
 console.log(scriptConNombres, SCRIPTS)
 
+LA FUNCION MAP DEVUELVE UN ARRAY
+
 
 
 ----- RESUMIENTO CON REDUCE -----

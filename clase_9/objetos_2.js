@@ -106,4 +106,13 @@ edades.set('Francisco', 30)
 edades.set('Lucas', 28)
 
 console.log(edades)
+
+
+
+----- POLIMORFISMO -----
+
+Capacidad que puede tener un pedazo de código para tomar una forma
+diferente.
+
+
 */
